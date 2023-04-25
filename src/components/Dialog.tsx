@@ -2,7 +2,6 @@ import React from "react";
 import Button from "./Button";
 
 import { useTranslation } from "next-i18next";
-import clsx from "clsx";
 
 export default function Dialog({
   header,
@@ -10,16 +9,14 @@ export default function Dialog({
   isShown,
   close,
   footerButton,
-  contentClassName,
 }: {
   header: React.ReactNode;
   children: React.ReactNode;
   isShown: boolean;
   close: () => void;
   footerButton?: React.ReactNode;
-  contentClassName?: string;
 }) {
-  const [t] = useTranslation();
+  const [ t ] = useTranslation()
   if (!isShown) {
     return <>{null}</>;
   }
@@ -46,12 +43,7 @@ export default function Dialog({
             </button>
           </div>
           {/*body*/}
-          <div
-            className={clsx(
-              "text-md relative max-h-[50vh] flex-auto overflow-y-auto p-3 leading-relaxed",
-              contentClassName
-            )}
-          >
+          <div className="text-md relative my-3 max-h-[50vh] flex-auto overflow-y-auto p-3 leading-relaxed">
             {children}
           </div>
           {/*footer*/}
@@ -60,7 +52,7 @@ export default function Dialog({
               enabledClassName="bg-yellow-600 hover:bg-yellow-500"
               onClick={close}
             >
-              {t("Close")}
+              {t('Close')}
             </Button>
             {footerButton}
           </div>
